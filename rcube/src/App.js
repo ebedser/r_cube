@@ -36,6 +36,7 @@ class Cube {
             ["W","W","W","W","W","W","W","W","W"],
             ["O","O","O","O","O","O","O","O","O"],
             ["B","B","B","B","B","B","B","B","B"],
+            //["0","1","2","3","4","5","6","7","8"]
             ["G","G","G","G","G","G","G","G","G"]
         ];
     }
@@ -77,6 +78,8 @@ class Cube {
         this.cycle(0,5,1,5,2,5,3,5);
         this.cycle(0,8,1,8,2,8,3,8);
         this.cycle(0,2,1,2,2,2,3,2);
+        this.cycle(5,1,5,3,5,7,5,5);
+        this.cycle(5,0,5,6,5,8,5,2);
     }
 }
 var aCube = new Cube();
@@ -96,5 +99,4 @@ class App extends Component {
     );
   }
 }
-aCube.rMove();
 export default App;
