@@ -26,17 +26,21 @@ import './App.css';
  *     345
  *     678
  *
+ *
+ *
+ *
+ *
  */
 class Cube {
     constructor(){
         //this.face = ["YYYYYYYYY","RRRRRRRRR","WWWWWWWWW","OOOOOOOOO","BBBBBBBBB","GGGGGGGGG"];
         this.face = [
             ["Y","Y","Y","Y","Y","Y","Y","Y","Y"],
+            //["0","1","2","3","4","5","6","7","8"],
             ["R","R","R","R","R","R","R","R","R"],
             ["W","W","W","W","W","W","W","W","W"],
             ["O","O","O","O","O","O","O","O","O"],
             ["B","B","B","B","B","B","B","B","B"],
-            //["0","1","2","3","4","5","6","7","8"]
             ["G","G","G","G","G","G","G","G","G"]
         ];
     }
@@ -73,25 +77,42 @@ class Cube {
         this.face[f3][b3] = this.face[f4][b4];
         this.face[f4][b4] = x;
     }
-
-    rMove(){
+    //U L- F R- B D M E S X Y
+    RMove(){
         this.cycle(0,5,1,5,2,5,3,5);
         this.cycle(0,8,1,8,2,8,3,8);
         this.cycle(0,2,1,2,2,2,3,2);
         this.cycle(5,1,5,3,5,7,5,5);
         this.cycle(5,0,5,6,5,8,5,2);
     }
-    rpMove(){
-        //05 15 25 35 -> 35 25 15 05
-        //08 18 28 38 -> 38 28 18 08
-        //02 12 22 32 -> 32 22 12 02
-        //51 53 57 55 -> 55 57 53 51
-        //50 56 58 52 -> 52 58 56 50
+    RpMove(){
         this.cycle(3,5,2,5,1,5,0,5);
         this.cycle(3,8,2,8,1,8,0,8);
         this.cycle(3,2,2,2,1,2,0,2);
         this.cycle(5,5,5,7,5,3,5,1);
         this.cycle(5,2,5,8,5,6,5,0);
+    }
+    LMove(){
+        this.cycle(0,3,1,3,2,3,3,3);
+        this.cycle(0,0,1,0,2,0,3,0);
+        this.cycle(0,6,1,6,2,6,3,6);
+        this.cycle(4,5,4,7,4,3,4,1);
+        this.cycle(4,2,4,8,4,6,4,0);
+    }
+    LpMove(){
+        this.cycle(3,3,2,3,1,3,0,3);
+        this.cycle(3,0,2,0,1,0,0,0);
+        this.cycle(3,6,2,6,1,6,0,6);
+        this.cycle(4,1,4,3,4,7,4,5);
+        this.cycle(4,0,4,6,4,8,4,2);
+    }
+    UpMove(){
+        this.cycle(0,1,0,5,0,7,0,3);
+        this.cycle(0,2,0,8,0,6,0,0);
+
+        this.cycle(4,2,3,8,5,6,1,0);
+        this.cycle(4,5,3,7,5,3,1,1);
+        this.cycle(4,8,3,6,5,0,1,2);
     }
 }
 var aCube = new Cube();
@@ -111,4 +132,5 @@ class App extends Component {
     );
   }
 }
+aCube.UpMove();
 export default App;
